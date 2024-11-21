@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
     paddingVertical: 10,
     alignItems: "center",
-    paddingTop: 40,
   },
   headerText: {
     flex: 1,
