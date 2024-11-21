@@ -1,18 +1,18 @@
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import { View } from "react-native";
 import AboutScreen from "./components/review/about";
-import DetailScreen from "./components/review/detail";
 import HomeScreen from "./components/review/home";
+import { FREEBSCA, OPENSANS_REGULAR } from "./utils/const";
+import { NavigationContainer } from "@react-navigation/native";
+import AppNavigation from "./components/navigation/app.navigation";
 
 SplashScreen.preventAutoHideAsync();
 
 const App = () => {
   const [loaded, error] = useFonts({
-    "OpenSans-Regular": require("./assets/fonts/OpenSans-Regular.ttf"),
-    "FREEBSCA": require("./assets/fonts/FREEBSCA.ttf"),
-
+    [OPENSANS_REGULAR]: require("./assets/fonts/OpenSans-Regular.ttf"),
+    [FREEBSCA]: require("./assets/fonts/FREEBSCA.ttf"),
   });
 
   useEffect(() => {
@@ -25,13 +25,10 @@ const App = () => {
     return null;
   }
 
-
   return (
-    <View style={{ padding: 50 }}>
-      <HomeScreen />
-      <DetailScreen />
-      <AboutScreen />
-    </View>
+    <NavigationContainer>
+      <AppNavigation />
+    </NavigationContainer>
   );
 };
 export default App;
