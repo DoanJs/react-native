@@ -1,3 +1,4 @@
+import AntDesign from "@expo/vector-icons/AntDesign";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import {
@@ -5,8 +6,10 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
 } from "react-native";
+import CreateModal from "./create.modal";
 
 const styles = StyleSheet.create({
   reviewText: {
@@ -41,8 +44,18 @@ const HomeScreen = () => {
       star: 5,
     },
   ]);
+
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <View>
+      <View style={{ alignItems: "center", marginTop: 10 }}>
+        <AntDesign
+          name="plussquareo"
+          size={30}
+          color="orange"
+          onPress={() => setModalVisible(true)}
+        />
+      </View>
       <View>
         <FlatList
           data={reviews}
@@ -61,6 +74,10 @@ const HomeScreen = () => {
           }}
         />
       </View>
+        <CreateModal
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+        />
     </View>
   );
 };
